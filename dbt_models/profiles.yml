@@ -1,0 +1,11 @@
+dbt_models:
+  outputs:
+    dev:
+      type: sqlite
+      threads: 1
+      database: 'database'
+      schema: 'main'
+      schemas_and_paths:
+        main: '../analytics.db'
+      schema_directory: '../'
+  target: dev

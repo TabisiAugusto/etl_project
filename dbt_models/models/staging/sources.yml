@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: crypto_raw
+    description: "Datos crudos extraídos de la API de CoinGecko"
+    database: database
+    schema: main
+    tables:
+      - name: raw_crypto_prices
+        description: "Tabla base con los precios e info de las top 100 criptos."

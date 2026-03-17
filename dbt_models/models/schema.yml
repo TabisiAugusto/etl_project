@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_crypto_prices
+    description: "Modelo de staging para precios de criptomonedas"
+    columns:
+      - name: coin_id
+        description: "Primary key para criptos"
+        tests:
+          - unique
+          - not_null
+      - name: coin_symbol
+        description: "Símbolo de la criptomoneda (ej. btc, eth)"
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Precio actual en dólares americanos"
+        tests:
+          - not_null
+
+  - name: fct_crypto_daily_performance
+    description: "Fact table con rendimientos diarios para el Top 50 criptomonedas."
+    columns:
+      - name: coin_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: daily_performance_category
+        description: "Categoría de rendimiento según porcentaje de cambio 24h"
+        tests:
+          - accepted_values:
+              values: ['High Growth', 'Moderate Growth', 'Stable', 'Decline']
